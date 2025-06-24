@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sergo Muhammed - Biyomedikal & Elektrik-Elektronik Mühendisi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background-color: #1a1a1a;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #fff, #a0a0a0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .contact-item a:hover {
+            opacity: 0.8;
+        }
+
+        nav {
+            background: rgba(42, 42, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ccc;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a:hover::before {
+            width: 80%;
+        }
+
+        main {
+            padding: 40px 0;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            background: linear-gradient(145deg, #2a2a2a, #1f1f1f);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: white;
+            position: relative;
+            text-align: center;
+        }
+
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        .education-item, .experience-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid;
+            border-image: linear-gradient(45deg, #667eea, #764ba2) 1;
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover, .experience-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+
+        .item-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .item-subtitle {
+            font-size: 1rem;
+            color: #bbb;
+            margin-bottom: 8px;
+        }
+
+        .item-date {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
+        .item-description {
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        .item-description ul {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+
+        .item-description li {
+            margin-bottom: 4px;
+        }
+
+        .gpa {
+            color: #4CAF50;
+            font-weight: 600;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: linear-gradient(145deg, #333, #2a2a2a);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 
+                0 4px 15px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 8px 25px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .project-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .project-description {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-category {
+            background: linear-gradient(145deg, #333, #2a2a2a);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 
+                0 4px 15px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 6px 20px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .skill-category h3 {
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 15px;
+            text-align: center;
+            position: relative;
+        }
+
+        .skill-category h3::after {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 2px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 8px auto;
+            border-radius: 1px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 6px 0;
+            color: #ddd;
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .skill-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .language-item {
+            background: linear-gradient(145deg, #333, #2a2a2a);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 
+                0 4px 15px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .language-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 6px 20px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .language-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 1px;
+        }
+
+        .language-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 8px;
+            margin-top: 5px;
+        }
+
+        .language-level {
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .section {
+                padding: 25px;
+                margin-bottom: 40px;
+            }
+
+            .section h2 {
+                font-size: 1.6rem;
+            }
+        }
+
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="smooth-scroll">
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Sergo Muhammed</h1>
+                <p class="header-subtitle">Biyomedikal & Elektrik-Elektronik Mühendisi</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <a href="mailto:sergomuahmmed39@gmail.com">sergomuahmmed39@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <a href="tel:+905456346736">+90 545 634 67 36</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>💼</span>
+                        <a href="https://linkedin.com/in/sergo-muhammed" target="_blank">LinkedIn</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>İstanbul, Türkiye</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="#egitim">Eğitim</a></li>
+                    <li><a href="#deneyim">Deneyim</a></li>
+                    <li><a href="#projeler">Projeler</a></li>
+                    <li><a href="#beceriler">Beceriler</a></li>
+                    <li><a href="#diller">Diller</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <section id="egitim" class="section">
+                <h2>Eğitim</h2>
+                <div class="education-item">
+                    <div class="item-header">
+                        <div class="item-title">İstanbul Yeni Yüzyıl Üniversitesi</div>
+                        <div class="item-subtitle">Lisans – Çift Anadal: Biyomedikal Mühendisliği & Elektrik-Elektronik Mühendisliği</div>
+                        <div class="item-date">Kasım 2022 – Haziran 2025</div>
+                    </div>
+                    <div class="item-description">
+                        <p><span class="gpa">GANO: 3.30 / 4.00</span></p>
+                        <p>Biyomedikal teknolojileri ve elektrik-elektronik sistemleri alanında kapsamlı eğitim alarak, tıbbi cihazlar ve teknolojik çözümler konusunda uzmanlık geliştirmekteyim.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="deneyim" class="section">
+                <h2>Staj ve Deneyim</h2>
+                <div class="experience-item">
+                    <div class="item-header">
+                        <div class="item-title">Bakırköy Dr. Sadi Konuk Eğitim ve Araştırma Hastanesi</div>
+                        <div class="item-subtitle">Stajyer – Teknik Servis Birimi</div>
+                        <div class="item-date">Temmuz 2024 – Ağustos 2024</div>
+                    </div>
+                    <div class="item-description">
+                        <ul>
+                            <li>Medikal cihazların teknik servisi ve bakım işlemleri</li>
+                            <li>Arıza tespiti ve onarım süreçlerine aktif destek</li>
+                            <li>Hastane ortamında teknolojik altyapı yönetimi deneyimi</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projeler" class="section">
+                <h2>Projeler</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-title">Arduino Tabanlı Akıllı Otopark Sistemi</div>
+                        <div class="project-description">
+                            Araç giriş-çıkış kontrolü ve sayım sistemi geliştirme projesi. IoT teknolojileri kullanarak otopark yönetimini otomatikleştiren çözüm.
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-title">EKG Devresi Uygulaması</div>
+                        <div class="project-description">
+                            Arduino ve breadboard üzerinde temel sinyal okuma devresi tasarımı. Biyomedikal sinyal işleme konusunda pratik uygulama.
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-title">Tıbbi Görüntüler İçin 3B Modelleme ve Analizi</div>
+                        <div class="project-description">
+                            Tıbbi görüntüleme verilerinin 3B modellemesi ve analizi üzerine araştırma projesi. Görüntü işleme teknikleri uygulaması.
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-title">Teknofest Kulübü</div>
+                        <div class="project-description">
+                            Saymanlık görevinde aktif rol alarak, kulüp faaliyetlerinin finansal yönetimi ve organizasyonuna katkı sağlama.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="beceriler" class="section">
+                <h2>Teknik Beceriler</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Yazılım</h3>
+                        <ul class="skill-list">
+                            <li>Python</li>
+                            <li>MATLAB</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Tasarım</h3>
+                        <ul class="skill-list">
+                            <li>AutoCAD</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Ofis Programları</h3>
+                        <ul class="skill-list">
+                            <li>Microsoft Word</li>
+                            <li>Microsoft Excel</li>
+                            <li>Microsoft PowerPoint</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="diller" class="section">
+                <h2>Yabancı Dil</h2>
+                <div class="languages-grid">
+                    <div class="language-item">
+                        <div class="language-name">Türkçe</div>
+                        <div class="language-level">Ana Dil</div>
+                    </div>
+                    <div class="language-item">
+                        <div class="language-name">Arapça</div>
+                        <div class="language-level">İyi</div>
+                    </div>
+                    <div class="language-item">
+                        <div class="language-name">İngilizce</div>
+                        <div class="language-level">Başlangıç Düzeyinde</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Sergo Muhammed. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active class to navigation items on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+    <style>
+        .nav-links a.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a.active::before {
+            width: 80%;
+        }
+    </style>
+</body>
+</html>
